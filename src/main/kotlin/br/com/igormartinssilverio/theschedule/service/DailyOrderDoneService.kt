@@ -43,8 +43,13 @@ class DailyOrderDoneService (
         return dailyOrderDoneRepository.findByDateBetween(startDate, endDate) ?: throw NotFoundException("F")
     }
 
-    fun markAsDone(id: Long, date: LocalDate): DailyOrderDone {
+    fun findByMonthAndId(id: Long, startDate: LocalDate, endDate: LocalDate) : List<DailyOrderDone> {
+        val dailyOrdersDone = dailyOrderDoneRepository.findByDailyOrderIdAndAndDateBetweenOrderByDate(id, startDate, endDate)
 
+        return dailyOrdersDone
+    }
+
+    fun markAsDone(id: Long, date: LocalDate): DailyOrderDone {
         val dailyOrderDoneToMarkAsDone = dailyOrderDoneRepository.findByDailyOrderIdAndAndDate(id, date)
             ?: throw NotFoundException("Daily Order not found for these id $id and date $date")
 

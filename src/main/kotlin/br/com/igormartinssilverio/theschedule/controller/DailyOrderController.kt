@@ -2,6 +2,7 @@ package br.com.igormartinssilverio.theschedule.controller
 
 import br.com.igormartinssilverio.theschedule.entity.DailyOrder
 import br.com.igormartinssilverio.theschedule.entity.form.DailyOrderForm
+import br.com.igormartinssilverio.theschedule.entity.view.DailyOrderMonthView
 import br.com.igormartinssilverio.theschedule.service.DailyOrderService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
@@ -21,7 +22,7 @@ class DailyOrderController(
     fun findByMonth(
         @RequestParam year: Int,
         @RequestParam month: Int
-    ) : ResponseEntity<List<DailyOrder>> {
+    ) : ResponseEntity<List<DailyOrderMonthView>> {
         return ResponseEntity.ok(dailyOrderService.findByMonth(year, month))
     }
 

@@ -11,6 +11,7 @@ data class DailyOrder (
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
     val name: String = "",
+    val description: String = "",
     val category: CategoryEnum = CategoryEnum.GOD,
     val month: LocalDate,
     @ManyToOne

@@ -7,4 +7,5 @@ import java.time.LocalDate
 interface DailyOrderDoneRepository : JpaRepository<DailyOrderDone, Long> {
     fun findByDateBetween(startDate: LocalDate, endDate: LocalDate) : List<DailyOrderDone>?
     fun findByDailyOrderIdAndAndDate(id: Long, date: LocalDate) : DailyOrderDone?
+    fun findByDailyOrderIdAndAndDateBetweenOrderByDate(id: Long, startDate: LocalDate, endDate: LocalDate) : List<DailyOrderDone>
 }
