@@ -1,6 +1,7 @@
 package br.com.igormartinssilverio.theschedule.controller
 
 import br.com.igormartinssilverio.theschedule.entity.DailyOrder
+import br.com.igormartinssilverio.theschedule.entity.enum.CategoryEnum
 import br.com.igormartinssilverio.theschedule.entity.form.DailyOrderForm
 import br.com.igormartinssilverio.theschedule.entity.view.DailyOrderMonthView
 import br.com.igormartinssilverio.theschedule.service.DailyOrderService
@@ -19,11 +20,20 @@ class DailyOrderController(
     }
 
     @GetMapping("/month")
-    fun findByMonth(
+    fun findByMonthAndId(
         @RequestParam year: Int,
         @RequestParam month: Int
     ) : ResponseEntity<List<DailyOrderMonthView>> {
         return ResponseEntity.ok(dailyOrderService.findByMonth(year, month))
+    }
+
+    @GetMapping("/category")
+    fun findByCategoryAndMonth(
+        @RequestParam category: CategoryEnum,
+        @RequestParam year: Int,
+        @RequestParam month: Int
+    ) : ResponseEntity<List<DailyOrderMonthView>> {
+        return ResponseEntity.ok(dailyOrderService.findByCategoryAndMonth(category, year, month))
     }
 
     @PostMapping

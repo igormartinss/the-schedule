@@ -12,6 +12,7 @@ data class DailyOrder (
     val id: Long? = null,
     val name: String = "",
     val description: String = "",
+    @Enumerated(EnumType.STRING)
     val category: CategoryEnum = CategoryEnum.GOD,
     val month: LocalDate,
     @ManyToOne
